@@ -32,7 +32,7 @@ user@pc:~$ git clone https://github.com/danieloliveirasouza/next-level-week-05
 
 Inicialização da Aplicação web 
 ```console
-user@pc:~$ cd aulas/podcastr
+user@pc:~$ cd aulas/podcastr-next
 user@pc:~$ #configuração de dependencias
 user@pc:~$ yarn
 user@pc:~$ #Inicialização da aplicação web
