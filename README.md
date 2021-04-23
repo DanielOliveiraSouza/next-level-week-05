@@ -20,7 +20,7 @@ Consulte  *[tutorial](https://www.notion.so/Configura-es-do-ambiente-6dd0c69e71e
 
 Layout 📌️
 ---
-Link para [layout]()
+Link para [layout](https://www.figma.com/file/UwFEntsHpHYJlHNQAQr4gA/Podcastr/duplicate)
 
 Getting Started! 🚀️
 ---
