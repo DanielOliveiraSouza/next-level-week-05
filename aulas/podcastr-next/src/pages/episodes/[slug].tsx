@@ -6,6 +6,7 @@ import { useRouter} from 'next/router';
 import { api } from '../../services/api';
 import convertDurationToTimeString from '../../utils/convertDurationToTimeString';
 import styles  from './episode.module.scss';
+import Link from 'next/link';
 
 
 type Episode  = {
@@ -29,9 +30,11 @@ export default function Episode({episode }:EpisodeProps){
     return (
         <div className={styles.episode}>
             <div className={styles.thumbnailContainer}>
-                <button>
-                    <img src="/arrow-left.svg" alt="Voltar"/>
-                </button>
+                <Link href="/">
+                    <button>
+                        <img src="/arrow-left.svg" alt="Voltar"/>
+                    </button>
+                    </Link>
 
                 <Image 
                     width={700} 
