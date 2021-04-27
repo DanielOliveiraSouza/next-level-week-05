@@ -13,7 +13,7 @@ type Episode  = {
   title: string;
   thumbnail: string;
   members: string;
-  publisheAt: string;
+  publishedAt: string;
   duration: number;
   durationAsString: string;
   description: string;
@@ -21,7 +21,8 @@ type Episode  = {
 }
 
 type HomeProps = {
-  latestEpisodes,allEpisodes: Episode[];
+  latestEpisodes: Episode[];
+  allEpisodes: Episode[];
 }
 
 //SSG
@@ -51,8 +52,7 @@ export default function Home({latestEpisodes,allEpisodes}:HomeProps) {
                 
                 <button type="button">
                   <img src="/play-green.svg" alt="Tocar Episódio"/>
-                </button>
-
+                </button> 
             </li>  
           )
         })}
@@ -60,7 +60,41 @@ export default function Home({latestEpisodes,allEpisodes}:HomeProps) {
     </section>
 
     <section className={styles.allEpisodes}>
-      
+      <table cellSpacing={0}>
+        <thead>
+          <th></th>
+          <th>Podcasts</th>
+          <th>Integrantes</th>
+          <th>Data</th>
+          <th>Duração</th>
+          <th></th>
+          </thead>
+          <tbody>
+            {allEpisodes.map(episode => {
+              return (
+              <tr key={episode.id}>
+                <td>
+                  <Image 
+                  width={120} 
+                  height={120} 
+                  src={episode.thumbnail}
+                  alt={episode.title} 
+                  objectFit="cover">
+                  </Image>
+                </td>
+                <td><a href="">{episode.title}</a></td>
+                <td>{episode.members}</td>
+                <td>{episode.publishedAt}</td>
+                <td>{episode.durationAsString}</td>
+                <td>
+                  <button type="button">
+                    <img src="/play-green.svg" alt="Tocar podcast"/>
+                  </button>
+                </td>
+              </tr>)
+            })}
+          </tbody>
+      </table>
     </section>
     </div>
   )
@@ -81,7 +115,7 @@ export const getStaticProps:GetStaticProps = async() => {
         title: episode.title,
         thumbnail: episode.thumbnail,
         members: episode.members,
-        publisheAt: format(parseISO(episode.published_at),'d MMM yy', {locale:ptBR}),
+        publishedAt: format(parseISO(episode.published_at),'d MMM yy', {locale:ptBR}),
         duration: Number(episode.file.duration),
         durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
         description: episode.description,
