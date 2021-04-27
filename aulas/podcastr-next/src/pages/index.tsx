@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {GetStaticProps} from 'next';
+import Link from 'next/link';
+import {useRouter} from 'next/router';
+ 
 import Image from 'next/image';
 import { api } from '../services/api';
 import {format,parseISO} from 'date-fns';
@@ -16,7 +19,7 @@ type Episode  = {
   publishedAt: string;
   duration: number;
   durationAsString: string;
-  description: string;
+//  description: string;
   url: string;
 }
 
@@ -44,7 +47,10 @@ export default function Home({latestEpisodes,allEpisodes}:HomeProps) {
               />
               
               <div className={styles.episodeDetails}>
-                <a href=""></a>
+              <Link href={`/episodes/${episode.id}`}>
+                <a>{episode.title}</a>
+               </Link>
+          
                 <p>{episode.members}</p>
                 <span>{episode.publishedAt}</span>
                 <span>{episode.durationAsString}</span>
@@ -62,29 +68,38 @@ export default function Home({latestEpisodes,allEpisodes}:HomeProps) {
     <section className={styles.allEpisodes}>
       <table cellSpacing={0}>
         <thead>
-          <th></th>
-          <th>Podcasts</th>
-          <th>Integrantes</th>
-          <th>Data</th>
-          <th>Duração</th>
-          <th></th>
+          <tr>
+            <th></th>
+            <th>Podcasts</th>
+            <th>Integrantes</th>
+            <th>Data</th>
+            <th>Duração</th>
+            <th></th>
+            </tr>
           </thead>
           <tbody>
             {allEpisodes.map(episode => {
               return (
-              <tr key={episode.id}>
+              <tr key={episode.id}>  
                 <td>
                   <Image 
-                  width={120} 
-                  height={120} 
+                  width={72} 
+                  height={72} 
                   src={episode.thumbnail}
                   alt={episode.title} 
                   objectFit="cover">
                   </Image>
                 </td>
-                <td><a href="">{episode.title}</a></td>
+                <td>  
+                  <Link href={`/episodes/${episode.id}`}>
+      
+                    <a>{episode.title}</a>
+                    </Link>
+                </td>
                 <td>{episode.members}</td>
-                <td>{episode.publishedAt}</td>
+                <td  style={{width: 100}}>
+                  {episode.publishedAt}
+                  </td>
                 <td>{episode.durationAsString}</td>
                 <td>
                   <button type="button">
@@ -118,7 +133,7 @@ export const getStaticProps:GetStaticProps = async() => {
         publishedAt: format(parseISO(episode.published_at),'d MMM yy', {locale:ptBR}),
         duration: Number(episode.file.duration),
         durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
-        description: episode.description,
+     //   description: episode.description,
         url: episode.file.url,
       };
     })
