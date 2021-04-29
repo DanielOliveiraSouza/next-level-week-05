@@ -7,6 +7,7 @@ import { api } from '../../services/api';
 import convertDurationToTimeString from '../../utils/convertDurationToTimeString';
 import styles  from './episode.module.scss';
 import Link from 'next/link';
+import { route } from 'next/dist/next-server/server/router';
 
 
 type Episode  = {
@@ -27,6 +28,12 @@ type EpisodeProps  = {
 }
 
 export default function Episode({episode }:EpisodeProps){
+    const router = useRouter();
+    if ( router.isFallback){
+        return (
+            <p>Carregando...</p>
+        )
+    }
     return (
         <div className={styles.episode}>
             <div className={styles.thumbnailContainer}>
@@ -62,9 +69,25 @@ export default function Episode({episode }:EpisodeProps){
 
 
 export const getStaticPaths: GetStaticPaths = async() =>{
+    const {data} = await api.get('episodes',{
+        params:{
+            _limit:2,
+            _sort:'pusblished_at',
+            _order:'desc'
+        }
+    })
+
+    const paths = data.map(episode =>{
+        return {
+            params:{
+                slug: episode.id
+            }
+        }
+
+    })
     return {
-        paths: [],
-        fallback: 'blocking'
+        paths, //paths: [],
+        fallback: 'blocking' // false: itens estaticos não definidos em path não são encontrados , true: (client) carrega e gera páginas estaticas, blocking: 
     }
 }
 
