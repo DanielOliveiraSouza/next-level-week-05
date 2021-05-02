@@ -9,8 +9,7 @@ import {format,parseISO} from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import convertDurationToTimeString from '../utils/convertDurationToTimeString';
 import styles from './home.module.scss';
-import { useContext } from 'react';
-import { PlayerContext } from '../components/contexts/PlayerContext';
+import { PlayerContext, usePlayer } from '../components/contexts/PlayerContext';
 
 
 type Episode  = {
@@ -33,7 +32,7 @@ type HomeProps = {
 //SSG
 export default function Home({latestEpisodes,allEpisodes}:HomeProps) {
   
-  const {playList} = useContext(PlayerContext);
+  const {playList} =usePlayer();
   const episodeList = [...latestEpisodes,...allEpisodes]
   return  (
     <div className={styles.homepage}>
