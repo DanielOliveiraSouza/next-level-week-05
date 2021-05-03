@@ -8,7 +8,7 @@ import convertDurationToTimeString from '../../utils/convertDurationToTimeString
 import styles  from './episode.module.scss';
 import Link from 'next/link';
 import { PlayerContext,usePlayer } from '../../components/contexts/PlayerContext';
-
+import Head from 'next/head';
 
 type Episode  = {
     id: string;
@@ -32,7 +32,10 @@ export default function Episode({episode }:EpisodeProps){
     const { play}  = usePlayer();
     return (
         <div className={styles.episode}>
-            <div className={styles.thumbnailContainer}>
+              <Head>
+                <title>{episode.title} | Podcastr </title>
+            </Head>
+            <div className={styles.thumbnailContainer}> 
                 <Link href="/">
                     <button>
                         <img src="/arrow-left.svg" alt="Voltar"/>

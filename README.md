@@ -46,9 +46,11 @@ Link do deploy [pocastr](https://podcastr-danieloliveirasouza.vercel.app)
 
 Desafios 🏆️
 ---
-<!-- Seguem os desafios propostos  pela **Rocketseat** para levar o Moveit para o próximo nível
-[Desafio Podcastr 2.0]()
--->
+ Seguem os desafios propostos  pela **Rocketseat** para levar o Moveit para o próximo nível
++ Desing Responsivo
++ Progressive Web Application
++ Tema Dark
+
 <!--a>
 Release Notes
 ---
