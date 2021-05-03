@@ -1,7 +1,7 @@
 <p align="center">
-<!-- <img src="https://raw.githubusercontent.com/DanielOliveiraSouza/next-level-week-05/main/screenshots"/>
+    <img src="https://raw.githubusercontent.com/DanielOliveiraSouza/next-level-week-05/main/screenshots/captura-01-home.png"/>
 </p>
--->
+
 
 <h1 align="center">Projeto Podcastr - Next Level Week #5</h1>
 
