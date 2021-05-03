@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/DanielOliveiraSouza/next-level-week-05/main/screenshots/captura-01-home.png"/>
+    <img src="https://raw.githubusercontent.com/DanielOliveiraSouza/next-level-week-05/main/aulas/screenshots/captura-01-home.png"/>
 </p>
 
 
