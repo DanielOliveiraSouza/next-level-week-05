@@ -38,11 +38,11 @@ user@pc:~$ yarn
 user@pc:~$ #Inicialização da aplicação web
 user@pc:~$ yarn dev
 ```
-<!--
+
 Deploy 💻️
 ---
-Link do deploy [pocastr](https://podcastr-danieloliveirasouza.vercel.app)
--->
+Link do deploy [pocastr](https://daniel-podcastr-danieloliveirasouza.vercel.app/)
+
 
 Desafios 🏆️
 ---
